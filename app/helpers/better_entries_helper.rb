@@ -1,0 +1,2 @@
+module BetterEntriesHelper
+end

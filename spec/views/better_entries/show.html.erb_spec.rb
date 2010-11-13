@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe "dictionary_entries/show.html.erb" do
+describe "better_entries/show.html.erb" do
   before(:each) do
-    @dictionary_entry = assign(:dictionary_entry, stub_model(DictionaryEntry,
+    @better_entry = assign(:better_entry, stub_model(BetterEntry,
       :user_id => 1,
       :word => "Word",
-      :definition => "Definition"
+      :definition => "MyText"
     ))
   end
 
@@ -16,6 +16,6 @@ describe "dictionary_entries/show.html.erb" do
     # Run the generator again with the --webrat-matchers flag if you want to use webrat matchers
     rendered.should match(/Word/)
     # Run the generator again with the --webrat-matchers flag if you want to use webrat matchers
-    rendered.should match(/Definition/)
+    rendered.should match(/MyText/)
   end
 end

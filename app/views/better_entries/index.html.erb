@@ -1,0 +1,27 @@
+<h1>Listing better_entries</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Word</th>
+    <th>Definition</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @better_entries.each do |better_entry| %>
+  <tr>
+    <td><%= better_entry.user_id %></td>
+    <td><%= better_entry.word %></td>
+    <td><%= better_entry.definition %></td>
+    <td><%= link_to 'Show', better_entry %></td>
+    <td><%= link_to 'Edit', edit_better_entry_path(better_entry) %></td>
+    <td><%= link_to 'Destroy', better_entry, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Better entry', new_better_entry_path %>

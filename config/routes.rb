@@ -1,5 +1,5 @@
 PersonalDictionary::Application.routes.draw do
-  resources :dictionary_entries
+  resources :entries
 
   resources :users
 
