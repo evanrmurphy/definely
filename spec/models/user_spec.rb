@@ -50,4 +50,14 @@ describe User do
     user_with_duplicate_email = User.new(@attr)
     user_with_duplicate_email.should_not be_valid
   end
+
+  describe "entry associations" do
+    before(:each) do
+      @user = User.create(@attr)
+    end
+
+    it "should have an entries attribute" do
+      @user.should respond_to(:entries)
+    end
+  end
 end
