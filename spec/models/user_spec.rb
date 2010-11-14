@@ -54,10 +54,16 @@ describe User do
   describe "entry associations" do
     before(:each) do
       @user = User.create(@attr)
+      @entry1 = Factory(:entry, :user => @user, :word => 'zebra')
+      @entry2 = Factory(:entry, :user => @user, :word => 'apple')
     end
 
     it "should have an entries attribute" do
       @user.should respond_to(:entries)
+    end
+
+    it "should have the right entries in the right order" do
+      @user.entries.should == [@entry2, @entry1]
     end
   end
 end

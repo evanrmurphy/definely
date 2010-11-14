@@ -13,4 +13,6 @@
 
 class Entry < ActiveRecord::Base
   belongs_to :user
+
+  default_scope :order => 'entries.word ASC'
 end
