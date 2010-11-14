@@ -1,4 +1,8 @@
 PersonalDictionary::Application.routes.draw do
+  get "users/new"
+
+  match '/signup', :to => 'users#new'
+
   root :to => "pages#home"
 
   # The priority is based upon order of creation:

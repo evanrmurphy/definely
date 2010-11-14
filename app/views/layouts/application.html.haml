@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Definely!
+    %title= title
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Reenie+Beanie&subset=latin'
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
@@ -13,3 +13,4 @@
     .center
       #logo <span id="define">Define</span><span id="ly">ly!</span>
       = yield
+      = debug(params) if Rails.env.development?

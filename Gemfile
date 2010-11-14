@@ -35,8 +35,14 @@ group :development do
   gem 'annotate-models'
 end
 
+# Specifying version 0.7.1 of webrat resolves
+# the broken layout links tests that occur in
+# webrat 0.7.2.
+# See http://stackoverflow.com/questions/3517724/rspec-is-giving-an-error-with-my-layout-links-from-the-rails-tutorial-failure-e/4139573#4139573
+# (11/14/10)
+
 group :test do
+  gem 'webrat', '0.7.1'
   gem 'rspec'
-  gem 'webrat'
   gem 'factory_girl_rails'
 end
