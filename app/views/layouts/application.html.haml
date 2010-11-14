@@ -10,6 +10,12 @@
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
+    - if signed_in?
+      = link_to "Profile", current_user
+    - if signed_in?
+      = link_to "Sign out", signout_path, :method => :delete
+    - else
+      = link_to "Sign in", signin_path
     #logo <span id="define">Define</span><span id="ly">ly!</span>
     - flash.each do |key, value|
       %div(class="flash #{key}")
