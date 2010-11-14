@@ -142,6 +142,11 @@ a.negative:active, button.negative:active {
 }
 
 /* line 15, ../../app/stylesheets/application.scss */
+h1 {
+  font-size: 32px;
+}
+
+/* line 17, ../../app/stylesheets/application.scss */
 .center {
   margin: 0px auto 0px auto;
   text-align: center;
