@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
 
-  has_many :entries
+  has_many :entries, :dependent => :destroy
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

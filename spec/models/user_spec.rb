@@ -65,5 +65,12 @@ describe User do
     it "should have the right entries in the right order" do
       @user.entries.should == [@entry2, @entry1]
     end
+
+    it "should destroy associated entries" do
+      @user.destroy
+      [@entry1, @entry2].each do |entry|
+        Entry.find_by_id(entry.id).should be_nil
+      end
+    end
   end
 end
