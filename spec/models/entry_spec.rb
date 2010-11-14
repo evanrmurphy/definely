@@ -29,4 +29,10 @@ describe Entry do
       @entry.user.should == @user
     end
   end
+
+  describe "validations" do
+    it "should require a user id" do
+      Entry.new(@attr).should_not be_valid
+    end
+  end
 end
