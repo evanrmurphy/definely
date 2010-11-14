@@ -5,6 +5,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'compass', '>= 0.10.6'
 gem 'gravatar_image_tag'
+gem 'will_paginate'
 
 # Use unicorn as the web server
 # gem 'unicorn'
