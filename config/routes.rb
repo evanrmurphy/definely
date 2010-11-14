@@ -1,4 +1,6 @@
 PersonalDictionary::Application.routes.draw do
+  root :to => "pages#home"
+
   resources :entries
 
   resources :users
