@@ -130,14 +130,18 @@ a.negative:active, button.negative:active {
   font-family: 'Reenie Beanie', arial, cursive;
   font-size: 128px;
 }
+/* line 7, ../../app/stylesheets/application.scss */
+#logo #ly {
+  color: green;
+}
 
-/* line 8, ../../app/stylesheets/application.scss */
+/* line 10, ../../app/stylesheets/application.scss */
 #try-link {
   font-family: verdana;
   font-size: 24px;
 }
 
-/* line 13, ../../app/stylesheets/application.scss */
+/* line 15, ../../app/stylesheets/application.scss */
 .center {
   margin: 0px auto 0px auto;
   text-align: center;
