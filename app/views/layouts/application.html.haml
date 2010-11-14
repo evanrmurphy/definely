@@ -10,7 +10,6 @@
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    .center
-      #logo <span id="define">Define</span><span id="ly">ly!</span>
-      = yield
-      = debug(params) if Rails.env.development?
+    #logo <span id="define">Define</span><span id="ly">ly!</span>
+    = yield
+    = debug(params) if Rails.env.development?

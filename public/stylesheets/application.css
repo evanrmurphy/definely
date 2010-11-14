@@ -128,7 +128,7 @@ a.negative:active, button.negative:active {
 /* line 3, ../../app/stylesheets/application.scss */
 #logo {
   font-family: 'Reenie Beanie', arial, cursive;
-  font-size: 128px;
+  font-size: 72px;
 }
 /* line 7, ../../app/stylesheets/application.scss */
 #logo #ly {
@@ -138,15 +138,20 @@ a.negative:active, button.negative:active {
 /* line 10, ../../app/stylesheets/application.scss */
 #try-link {
   font-family: verdana;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 /* line 15, ../../app/stylesheets/application.scss */
 h1 {
-  font-size: 32px;
+  font-size: 24px;
 }
 
-/* line 17, ../../app/stylesheets/application.scss */
+/* line 16, ../../app/stylesheets/application.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 18, ../../app/stylesheets/application.scss */
 .center {
   margin: 0px auto 0px auto;
   text-align: center;

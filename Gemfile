@@ -5,7 +5,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'compass', '>= 0.10.6'
 gem 'gravatar_image_tag'
-gem 'will_paginate'
+gem 'will_paginate', '3.0.pre2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,6 +29,7 @@ gem 'will_paginate'
 group :development do
   gem 'rspec-rails'
   gem 'annotate-models'
+  gem 'faker'
 end
 
 # Specifying version 0.7.1 of webrat resolves
