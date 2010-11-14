@@ -1,0 +1,10 @@
+= form_for @entry do |f|
+  -# = render 'shared/error_messages', :object => f.object
+  .word
+    = f.label :word
+    = f.text_field :word
+  .definition
+    = f.label :definition
+    = f.text_area :definition
+  .actions
+    = f.submit "Add to dictionary"
