@@ -5,6 +5,10 @@ Factory.define :user do |user|
   user.password_confirmation "foobar"
 end
 
+Factory.sequence :email do |n|
+  "person-#{n}@example.com"
+end
+
 Factory.define :entry do |entry|
   entry.word "foo"
   entry.definition "a thing that precedes bar"
