@@ -4,7 +4,6 @@ gem 'rails', '3.0.1'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'compass', '>= 0.10.6'
-gem 'gravatar_image_tag'
 gem 'will_paginate', '3.0.pre2'
 gem 'taps', '>= 0.3.14'
 
