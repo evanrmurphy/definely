@@ -1,3 +1,4 @@
-= stylesheet_link_tag 'screen.css', :media => 'screen, projection'
-
-= link_to 'Sign up now!', signup_path, :id => 'try-link'
+- if signed_in?
+  = render 'shared/entry_form'
+- else
+  = link_to 'Sign up now!', signup_path, :id => 'try-link'

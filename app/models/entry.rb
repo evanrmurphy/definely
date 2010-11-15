@@ -14,6 +14,8 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
 
+  validates :word, :presence => true
+  validates :definition, :presence => true
   validates :user_id, :presence => true
 
   default_scope :order => 'entries.word ASC'

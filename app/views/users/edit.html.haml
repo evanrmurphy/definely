@@ -1,4 +1,4 @@
-%h1 Edit user
+%h1 Settings
 
 = form_for(@user) do |f|
   = render 'shared/error_messages', :object => f.object
@@ -15,7 +15,7 @@
     = f.label :password_confirmation
     = f.password_field :password_confirmation
   .actions
-    = f.submit "Udate"
+    = f.submit "Update"
 
 %div
   = gravatar_for @user
