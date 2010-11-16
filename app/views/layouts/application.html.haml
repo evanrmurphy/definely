@@ -10,6 +10,20 @@
     = javascript_include_tag 'jquery.js'
     = javascript_include_tag 'underscore.js'
     = javascript_include_tag 'backbone.js'
+
+    = javascript_include_tag 'models/entry.js'
+    = javascript_include_tag 'collections/entries_collection.js'
+    = javascript_include_tag 'views/entry_view.js'
+    = javascript_include_tag 'views/app_view.js'
     = csrf_meta_tag
   %body
+    #dictionaryapp
+      .title
+        %h1 Entries
+      .content
+        #create-entry
+          %input#new-word{'type' => 'text', 'placeholder' => 'Word'}
+          %input#new-definition{'type' => 'text', 'placeholder' => 'Definition'}
+        #entries
+          %ul#entry-list
     = yield
