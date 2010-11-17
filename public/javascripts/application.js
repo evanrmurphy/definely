@@ -1,26 +1,20 @@
 Word = Backbone.Model.extend({
-
-  validate: function(attrs) {
-    if (!attrs.content.length) {
-      return "content can't be blank";
-    }
-  },
-
-  getContent: function() {
-    return this.get("content");
-  }
-                               
 });
 
 word = new Word({
-  content : "especially"
-});
-
-word.bind("error", function(model, error) {
-  alert(error);
+  content: "indubitably"
 });
 
 WordView = Backbone.View.extend({
+
+  events: {
+    "change #change-word": "changeWord"
+  },
+
+  changeWord: function() {
+    this.model.set({content: $('#change-word').val()})
+    $('#change-word').val('');
+  },
 
   initialize: function() {
     _(this).bindAll("render");
@@ -28,13 +22,15 @@ WordView = Backbone.View.extend({
   },
 
   render: function() {
-    $(this.el).html(this.model.get("content"));
+    $('#word', this.el).html(this.model.get("content"));
     return this;
   }
 
 });
 
-new WordView({
-    model: word,
-    el: $('#words')
-}).render();
+wordView = new WordView({
+  model: word,
+  el: $('body')
+})
+
+wordView.render();
