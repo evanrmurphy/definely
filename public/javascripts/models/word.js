@@ -1,0 +1,1 @@
+Word = Backbone.Model.extend({});
