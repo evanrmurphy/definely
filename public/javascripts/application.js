@@ -1,11 +1,16 @@
-Word = Backbone.Model.extend({
+Word = Backbone.Model.extend({});
+
+WordCollection = Backbone.Collection.extend({
+  model: Word
 });
 
-word = new Word({
-  content: "indubitably"
-});
+words = new WordCollection();
 
 WordView = Backbone.View.extend({
+
+  events: {
+    "click #words": "addWord"
+  },
 
   initialize: function() {
     _(this).bindAll("render");
