@@ -1,16 +1,39 @@
-Word = Backbone.Model.extend({});
+/* Models */
+
+Word = Backbone.Model;
+
+/* Collections */
 
 WordCollection = Backbone.Collection.extend({
-  model: Word
+  model: Word,
+
+  comparator: function(word) {
+    return word.get("content");
+  }
 });
 
-words = new WordCollection();
+words = new WordCollection;
+
+words.bind("add", function(word) {
+
+  $('#words').empty();
+
+  words.each(function(word) {
+    $('#words').append(
+      new WordView({
+        model: word
+      }).render().el
+    );
+  });
+});
+
+/* Views */
 
 WordView = Backbone.View.extend({
 
-  events: {
-    "click #words": "addWord"
-  },
+  tagName: "li",
+
+  className: "word",
 
   initialize: function() {
     _(this).bindAll("render");
@@ -18,10 +41,9 @@ WordView = Backbone.View.extend({
   },
 
   render: function() {
-    $(this.el).append('<li>' + this.model.get("content"));
+    $(this.el).html("<" + this.tagName + " class=\"" + this.className + "\">" + this.model.get("content"));
     return this;
   }
-
 });
 
 AppView = Backbone.View.extend({
@@ -31,14 +53,13 @@ AppView = Backbone.View.extend({
   },
 
   addWord: function() {
-    new WordView({
-      model: new Word({content: $('#new-word').val()}),
-      el: $('#words')
-    }).render();
+
+    words.add(new Word({
+      content: $('#new-word').val()
+    }));
 
     $('#new-word').val('');
   }
-
 });
 
 appView = new AppView({
