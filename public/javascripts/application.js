@@ -35,13 +35,34 @@ WordView = Backbone.View.extend({
 
   className: "word",
 
+  events: {
+    "dblclick": "edit"
+  },
+
+  edit: function() {
+    $(this.el).html(
+      this.make("input",
+                {className: "editing",
+                 value: this.model.get("content")}));
+  },
+
   initialize: function() {
     _(this).bindAll("render");
     this.model.bind("change", this.render);
   },
 
+  // render: function() {
+  //   $(this.el).html(
+  //     this.make(this.tagName,
+  //               {className: this.className},
+  //               this.model.get("content")));
+  //   return this;
+  // },
+
   render: function() {
-    $(this.el).html("<" + this.tagName + " class=\"" + this.className + "\">" + this.model.get("content"));
+    $(this.el).html(
+      _.template($('#word-template').html(),
+                 {content: this.model.get("content")}));
     return this;
   }
 });
