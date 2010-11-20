@@ -12,20 +12,25 @@ body {
     width:100%;
   }
 
-  .word {
+  .words {
+    .word {
+      position: relative;
 
-    .show {
+      .show {
+        .destroy {
+          position: absolute;
+          right: 0;
+          top: 0; // Keep from skipping to the row below after jQuery toggles
+  
+           display: none;
 
-      .destroy {
-        position: absolute;
-        right: 0;
-
+          cursor: pointer;
+        }
+      }
+  
+      .edit {
         display: none;
       }
-    }
-
-    .edit {
-      display: none;
     }
   }
 }

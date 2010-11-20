@@ -21,15 +21,22 @@ WordView = Backbone.View.extend({
   className: "word",
 
   events: {
-    "dblclick .show .content": "edit",
+    "mouseover": "toggleDestroy",
+    "mouseout": "toggleDestroy",
+    "dblclick": "edit",
+    "click .show .destroy": "destroy",
     "change .edit input": "update",
     "blur   .edit input": "update",
+  },
+
+  toggleDestroy: function() {
+    this.$('.show .destroy').toggle();
   },
 
   edit: function() {
     this.$('.edit input').val( this.model.get("content") );
     this.$('.show, .edit').toggle();
-    this.$('.edit input').select();
+    this.$('.edit input').focus();  // alternatively, use .select() to highlight the text
   },
 
   update: function() {
@@ -37,6 +44,12 @@ WordView = Backbone.View.extend({
         content: this.$('.edit input').val()
     });
     this.model.change(); // in case the update doesn't change the value
+  },
+
+  destroy: function() {
+    this.collection.remove(this.model);
+    delete this.model;
+    this.remove();
   },
 
   initialize: function() {
@@ -89,7 +102,8 @@ wordsView.collection.bind("add", function(word) {
   wordsView.collection.each(function(word) {
     wordsView.$('.words').append(
       new WordView({
-        model: word
+        model: word,
+        collection: words
       }).render().el
     );
   });
