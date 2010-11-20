@@ -1,4 +1,9 @@
 /* line 1, ../../app/stylesheets/application.scss */
+body {
+  font-family: arial;
+}
+
+/* line 5, ../../app/stylesheets/application.scss */
 .word .edit {
   display: none;
 }
