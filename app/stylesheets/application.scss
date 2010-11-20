@@ -1,8 +1,15 @@
-#words .editing .show,
-#words .edit {
-  display: none;
-}
-
-#words .editing .edit {
-  display: block;
+#words {
+  /*
+  .editing {
+    .show {
+      display: none;
+    }
+    .edit {
+      display: block;
+    }
+  }
+  */
+  .edit {
+    display: none;
+  }
 }

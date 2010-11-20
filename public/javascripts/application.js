@@ -36,14 +36,25 @@ WordView = Backbone.View.extend({
   className: "word",
 
   events: {
-    "dblclick": "edit"
+    "dblclick": "edit",
+    "keypress input": "updateOnEnter",
   },
 
   edit: function() {
-    $(this.el).html(
-      this.make("input",
-                {className: "editing",
-                 value: this.model.get("content")}));
+    this.$('.edit input').val( this.model.get("content") );
+    this.$('.show, .edit').toggle();
+    this.$('.edit input').select();
+  },
+
+  /* Would it be more robust to use form submit or blur? */
+
+  updateOnEnter: function(e) {
+    if (e.keyCode == 13) {
+      this.model.set({
+          content: this.$('.edit input').val()
+      });
+      this.model.change(); // in case the update doesn't change the value
+    }
   },
 
   initialize: function() {
@@ -51,18 +62,11 @@ WordView = Backbone.View.extend({
     this.model.bind("change", this.render);
   },
 
-  // render: function() {
-  //   $(this.el).html(
-  //     this.make(this.tagName,
-  //               {className: this.className},
-  //               this.model.get("content")));
-  //   return this;
-  // },
-
   render: function() {
     $(this.el).html(
-      _.template($('#word-template').html(),
-                 {content: this.model.get("content")}));
+      _.template( $('#word-template').html() )
+    );
+    this.$('.show').html( this.model.get("content") );
     return this;
   }
 });
