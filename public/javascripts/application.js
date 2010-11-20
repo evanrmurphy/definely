@@ -12,21 +12,6 @@ WordCollection = Backbone.Collection.extend({
   }
 });
 
-words = new WordCollection;
-
-words.bind("add", function(word) {
-
-  $('#words').empty();
-
-  words.each(function(word) {
-    $('#words').append(
-      new WordView({
-        model: word
-      }).render().el
-    );
-  });
-});
-
 /* Views */
 
 WordView = Backbone.View.extend({
@@ -37,7 +22,8 @@ WordView = Backbone.View.extend({
 
   events: {
     "dblclick": "edit",
-    "keypress input": "updateOnEnter",
+    "change .edit input": "update",
+    "blur   .edit input": "update",
   },
 
   edit: function() {
@@ -48,13 +34,11 @@ WordView = Backbone.View.extend({
 
   /* Would it be more robust to use form submit or blur? */
 
-  updateOnEnter: function(e) {
-    if (e.keyCode == 13) {
-      this.model.set({
-          content: this.$('.edit input').val()
-      });
-      this.model.change(); // in case the update doesn't change the value
-    }
+  update: function() {
+    this.model.set({
+        content: this.$('.edit input').val()
+    });
+    this.model.change(); // in case the update doesn't change the value
   },
 
   initialize: function() {
@@ -71,22 +55,48 @@ WordView = Backbone.View.extend({
   }
 });
 
-AppView = Backbone.View.extend({
+WordsView = Backbone.View.extend({
 
   events: {
-    "change #new-word": "addWord"
+    "change .new input": "addWord"
   },
 
   addWord: function() {
 
-    words.add(new Word({
-      content: $('#new-word').val()
+    this.collection.add(new Word({
+      content: this.$('.new input').val()
     }));
 
-    $('#new-word').val('');
+    this.$('.new input').val('');
+  },
+
+  render: function() {
+    $(this.el).html(
+      _.template( $('#words-template').html() )
+    );
+    return this;
   }
 });
 
-appView = new AppView({
-  el: $('body')
+words = new WordCollection;
+
+wordsView = new WordsView({
+  collection: words
 });
+
+wordsView.collection.bind("add", function(word) {
+
+  wordsView.$('.words').empty();
+
+  wordsView.collection.each(function(word) {
+    wordsView.$('.words').append(
+      new WordView({
+        model: word
+      }).render().el
+    );
+  });
+});
+
+$('body').append(
+  wordsView.render().el
+);

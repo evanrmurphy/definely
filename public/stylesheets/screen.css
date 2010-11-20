@@ -63,19 +63,6 @@ a img {
 }
 
 /* line 1, ../../app/stylesheets/application.scss */
-#words {
-  /*
-  .editing {
-    .show {
-      display: none;
-    }
-    .edit {
-      display: block;
-    }
-  }
-  */
-}
-/* line 12, ../../app/stylesheets/application.scss */
-#words .edit {
+.word .edit {
   display: none;
 }
