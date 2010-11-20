@@ -1,13 +1,18 @@
 <script type="text/template" id="word-template"> 
-  <div class="show"></div>
+  <div class="show">
+    <span class="content">x</span>
+    <span class="destroy">x</span>
+  </div>
   <div class="edit">
     <input type="text" value="">
   </div>
 </script> 
 
 <script type="text/template" id="words-template"> 
-  <div class="new">
-    <input type="text" placeholder="New word">
+  <div class="words-container">
+    <div class="new">
+      <input type="text" placeholder="New word">
+    </div>
+    <ul class="words"></ul>
   </div>
-  <ul class="words"></ul>
 </script> 

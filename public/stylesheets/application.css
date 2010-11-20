@@ -4,6 +4,22 @@ body {
 }
 
 /* line 5, ../../app/stylesheets/application.scss */
-.word .edit {
+.words-container {
+  width: 200px;
+  margin: 0 auto;
+  position: relative;
+}
+/* line 11, ../../app/stylesheets/application.scss */
+.words-container input {
+  width: 100%;
+}
+/* line 19, ../../app/stylesheets/application.scss */
+.words-container .word .show .destroy {
+  position: absolute;
+  right: 0;
+  display: none;
+}
+/* line 27, ../../app/stylesheets/application.scss */
+.words-container .word .edit {
   display: none;
 }

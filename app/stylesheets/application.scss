@@ -2,6 +2,31 @@ body {
   font-family: arial;
 }
 
-.word .edit {
-  display: none;
+.words-container {
+
+  width: 200px;
+  margin: 0 auto;  // Reset margin to center the container
+  position: relative; // Set relative positioning for elements within
+
+  input {
+    width:100%;
+  }
+
+  .word {
+
+    .show {
+
+      .destroy {
+        position: absolute;
+        right: 0;
+
+        display: none;
+      }
+    }
+
+    .edit {
+      display: none;
+    }
+  }
 }
+

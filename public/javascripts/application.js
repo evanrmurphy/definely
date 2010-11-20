@@ -21,7 +21,7 @@ WordView = Backbone.View.extend({
   className: "word",
 
   events: {
-    "dblclick": "edit",
+    "dblclick .show .content": "edit",
     "change .edit input": "update",
     "blur   .edit input": "update",
   },
@@ -31,8 +31,6 @@ WordView = Backbone.View.extend({
     this.$('.show, .edit').toggle();
     this.$('.edit input').select();
   },
-
-  /* Would it be more robust to use form submit or blur? */
 
   update: function() {
     this.model.set({
@@ -50,7 +48,7 @@ WordView = Backbone.View.extend({
     $(this.el).html(
       _.template( $('#word-template').html() )
     );
-    this.$('.show').html( this.model.get("content") );
+    this.$('.show .content').html( this.model.get("content") );
     return this;
   }
 });
