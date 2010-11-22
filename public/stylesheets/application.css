@@ -1,23 +1,35 @@
-/* line 1, ../../app/stylesheets/application.scss */
+/* line 3, ../../app/stylesheets/application.scss */
 body {
   font-family: arial;
+  font-size: 24px;
+}
+/* line 6, ../../app/stylesheets/application.scss */
+body input {
+  font-size: 24px;
 }
 
-/* line 5, ../../app/stylesheets/application.scss */
+/* line 11, ../../app/stylesheets/application.scss */
 .words-container {
-  width: 200px;
+  width: 350px;
   margin: 0 auto;
   position: relative;
 }
-/* line 11, ../../app/stylesheets/application.scss */
+/* line 17, ../../app/stylesheets/application.scss */
 .words-container input {
   width: 100%;
 }
-/* line 16, ../../app/stylesheets/application.scss */
+/* line 22, ../../app/stylesheets/application.scss */
 .words-container .words .word {
   position: relative;
 }
-/* line 20, ../../app/stylesheets/application.scss */
+/* line 25, ../../app/stylesheets/application.scss */
+.words-container .words .word .show {
+  /** Apply padding so lines don't jump when you go between show and edit
+   * (better to do this with the line-height property?)
+   */
+  padding: 7px 3px;
+}
+/* line 33, ../../app/stylesheets/application.scss */
 .words-container .words .word .show .destroy {
   position: absolute;
   right: 0;
@@ -25,7 +37,7 @@ body {
   display: none;
   cursor: pointer;
 }
-/* line 31, ../../app/stylesheets/application.scss */
+/* line 44, ../../app/stylesheets/application.scss */
 .words-container .words .word .edit {
   display: none;
 }

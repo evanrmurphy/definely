@@ -1,10 +1,16 @@
+$font-size: 24px;
+
 body {
   font-family: arial;
+  font-size: $font-size;
+  input {
+    font-size: $font-size;
+  }
 }
 
 .words-container {
 
-  width: 200px;
+  width: 350px;
   margin: 0 auto;  // Reset margin to center the container
   position: relative; // Set relative positioning for elements within
 
@@ -17,12 +23,19 @@ body {
       position: relative;
 
       .show {
+
+        /** Apply padding so lines don't jump when you go between show and edit
+         * (better to do this with the line-height property?)
+         */
+        padding: $font-size/4 + $font-size/24
+                 $font-size/8;
+
         .destroy {
           position: absolute;
           right: 0;
           top: 0; // Keep from skipping to the row below after jQuery toggles
   
-           display: none;
+          display: none;
 
           cursor: pointer;
         }
