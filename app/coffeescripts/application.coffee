@@ -29,7 +29,7 @@ WordView = Backbone.View.extend
     this.$('.show .destroy').toggle()
 
   edit: ->
-    this.$('.edit input').val( this.model.get("content") )
+    this.$('.edit input').val this.model.get("content")
     this.$('.show, .edit').toggle()
     this.$('.edit input').focus()  # alternatively, use .select() to highlight the text
 
@@ -39,13 +39,13 @@ WordView = Backbone.View.extend
     this.model.change() # in case the update doesn't change the value
 
   destroy: ->
-    this.collection.remove(this.model)
+    this.collection.remove this.model
     delete this.model
     this.remove()
 
   initialize: ->
-    _(this).bindAll("render")
-    this.model.bind("change", this.render)
+    _(this).bindAll "render"
+    this.model.bind "change", this.render
 
   render: ->
     $(this.el).html(
@@ -55,40 +55,41 @@ WordView = Backbone.View.extend
 
 WordsView = Backbone.View.extend
 
-  events: "change .new input": "addWord"
+  events:
+    "change .new input": "addWord"
 
   addWord: ->
-    this.collection.add(new Word({
+    this.collection.add new Word
       content: this.$('.new input').val()
-    }))
 
     this.$('.new input').val('')
 
   render: ->
     $(this.el).html(
-      _.template $('#words-template').html() )
-    return this
+      _.template $('#words-template').html()
+    )
+    this
 
-# words = new WordCollection
-#
-# wordsView = new WordsView({
-#   collection: words
-# })
-#
-# wordsView.collection.bind("add", function(word) {
-#
-#   wordsView.$('.words').empty()
-#
-#   wordsView.collection.each(function(word) {
-#     wordsView.$('.words').append(
-#       new WordView({
-#         model: word,
-#         collection: words
-#       }).render().el
-#     )
-#   })
-# })
-#
-# $('body').append(
-#   wordsView.render().el
-# )
+words = new WordCollection
+
+wordsView = new WordsView(
+  collection: words
+)
+
+wordsView.collection.bind("add", (word) ->
+
+  wordsView.$('.words').empty()
+
+  wordsView.collection.each( (word) ->
+    wordsView.$('.words').append(
+      new WordView
+        model: word
+        collection: words
+      .render().el
+    )
+  )
+)
+
+$('body').append(
+  wordsView.render().el
+)

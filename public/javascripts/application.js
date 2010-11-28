@@ -1,5 +1,5 @@
 (function() {
-  var Word, WordCollection, WordView, WordsView;
+  var Word, WordCollection, WordView, WordsView, words, wordsView;
   Word = Backbone.Model;
   WordCollection = Backbone.Collection.extend({
     model: Word,
@@ -49,17 +49,31 @@
   });
   WordsView = Backbone.View.extend({
     events: {
-      "change .new input": "addWord",
-      addWord: function() {
-        this.collection.add(new Word({
-          content: this.$('.new input').val()
-        }));
-        return this.$('.new input').val('');
-      },
-      render: function() {
-        $(this.el).html(_.template($('#words-template').html()));
-        return this;
-      }
+      "change .new input": "addWord"
+    },
+    addWord: function() {
+      this.collection.add(new Word({
+        content: this.$('.new input').val()
+      }));
+      return this.$('.new input').val('');
+    },
+    render: function() {
+      $(this.el).html(_.template($('#words-template').html()));
+      return this;
     }
   });
+  words = new WordCollection;
+  wordsView = new WordsView({
+    collection: words
+  });
+  wordsView.collection.bind("add", function(word) {
+    wordsView.$('.words').empty();
+    return wordsView.collection.each(function(word) {
+      return wordsView.$('.words').append(new WordView({
+        model: word,
+        collection: words
+      }).render().el);
+    });
+  });
+  $('body').append(wordsView.render().el);
 }).call(this);
