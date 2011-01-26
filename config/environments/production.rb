@@ -46,4 +46,9 @@ PersonalDictionary::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Prevent Sass from trying to generate CSS in production because it
+  # causes problems with Heroku's read-only filesystem.
+  # See http://ariejan.net/2010/09/28/precompile-sass-to-css-for-deployment-to-heroku/
+  Sass::Plugin.options[:never_update] = true
 end
